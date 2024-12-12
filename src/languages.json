@@ -1,0 +1,22 @@
+{
+    "languages": [
+       {"Arabic": "ar"},
+       {"Bulgarian": "bg"},
+       {"Czech": "cs"},
+       {"Dutch": "nl"},
+       {"German": "de"},
+       {"Greek": "el"},
+       {"English": "en"},
+       {"Spanish": "es"},
+       {"Estonian": "et"},
+       {"French": "fr"},
+       {"French_Canada": "fr-CA"},
+       {"Croatian": "hr"},
+       {"Italian": "it"},
+       {"Lithuanian": "lt"},
+       {"Latvian": "lv"},
+       {"Polish": "pl"},
+       {"Swedish": "sv"}
+    ]
+
+}
