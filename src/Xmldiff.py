@@ -1,4 +1,4 @@
-import json, os, sys
+import json, os, sys, shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from xml.dom import minidom
@@ -49,7 +49,7 @@ def append_tags(old_contents, new_contents):
         else:
             #Tag in the new file is NOT on old file, so should be appended
             try:
-                old_dict[tag.attrib["name"]] = tag.text
+                old_dict[tag] = new_dict[tag]
             except AttributeError:
                 pass
     #return a transformed old_dict
