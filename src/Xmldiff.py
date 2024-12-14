@@ -28,14 +28,14 @@ def get_country_code_list():
 def append_tags(old_contents, new_contents):
     old_dict = {}
     new_dict = {}
-    for tag in old_contents:
+    for tag in old_contents.iter("string"):
         try:
-            old_dict[tag.attrib["name"]] = tag.text
+            old_dict[tag.attrib["name"]] = ET.tostring(tag, encoding="unicode", method="xml")
         except KeyError:
             pass
     for tag in new_contents:
         try:
-            new_dict[tag.attrib["name"]] = tag.text
+            new_dict[tag.attrib["name"]] = ET.tostring(tag, encoding="unicode", method="xml")
         except KeyError:
             pass
     
@@ -71,15 +71,21 @@ def write_file(language, content_dict):
     os.chdir("./output/diffOutput")
     root = ""
     root = ET.Element("resources")
-    for tag in content_dict:
-        ET.SubElement(root, "string", name=f"{tag}").text = content_dict[tag]
+    # for tag in content_dict:
+    #     ET.SubElement(root, "string", name=f"{tag}").text = content_dict[tag]
 
-    xml_str = ET.tostring(root, encoding="unicode")
-    parsed = minidom.parseString(xml_str)
-    pretty_xml = parsed.toprettyxml(indent="    ")
+    # xml_str = ET.tostring(root, encoding="unicode")
+    # parsed = minidom.parseString(xml_str)
+    # pretty_xml = parsed.toprettyxml(indent="    ")
 
+    # with open(f"{language}.xml", "w", encoding="utf-8") as f:
+    #     f.write(pretty_xml)
     with open(f"{language}.xml", "w", encoding="utf-8") as f:
-        f.write(pretty_xml)
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write("<resources>\n")
+        for tag in content_dict:
+            f.write(f"{content_dict[tag]}")
+        f.write("\n</resources>")
 
 
     

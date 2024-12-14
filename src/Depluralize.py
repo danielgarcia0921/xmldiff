@@ -24,7 +24,7 @@ def open_file(xml_file):
     
 def create_tag(xml_file, item_tag, prefix):
     root = xml_file.getroot()
-    new_element = ET.SubElement(root, "String")
+    new_element = ET.SubElement(root, "string")
     try:
         new_element.set("name", f"{prefix}_{item_tag.attrib["quantity"]}")
     except KeyError:
